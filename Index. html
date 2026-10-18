@@ -3,382 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAGYA COACHING - Online Test</title>
+    <title>बायोलॉजी इंटरैक्टिव टेस्ट</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 10px;
-            color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #25D366;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .header h2 {
-            margin: 0;
-            color: #075e54;
-            font-size: 24px;
-        }
-        .header p {
-            margin: 5px 0 0;
-            color: #666;
-            font-size: 14px;
-        }
-        .meta-info {
-            background: #e7f5e9;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            color: #2e7d32;
-            font-weight: bold;
-        }
-        .login-box, .test-box, .result-box {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0 20px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        .btn {
-            background-color: #075e54;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .btn:hover {
-            background-color: #128c7e;
-        }
-        .question-counter {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .question-text {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-        }
-        .options-list li {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.2s;
-        }
-        .options-list li:hover {
-            background: #f1f1f1;
-        }
-        .options-list li.selected {
-            background: #dcf8c6;
-            border-color: #25D366;
-            font-weight: bold;
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 10px;
-            background: #e0e0e0;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .nav-btn:hover {
-            background: #d0d0d0;
-        }
-        .whatsapp-btn {
-            background-color: #25D366;
-            margin-top: 15px;
-        }
-        .whatsapp-btn:hover {
-            background-color: #1ebe5d;
-        }
-        .result-summary {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        .explanation {
-            font-size: 13px;
-            color: #d32f2f;
-            background: #ffebee;
-            padding: 8px;
-            border-radius: 4px;
-            margin-top: 5px;
-        }
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 20px; color: #333; }
+        .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #2C3E50; border-bottom: 2px solid #27AE60; padding-bottom: 10px; }
+        .question { margin-bottom: 20px; font-weight: bold; }
+        .options { list-style: none; padding: 0; }
+        .options li { margin-bottom: 10px; }
+        .options label { display: block; padding: 12px; background: #EBF5FB; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+        .options label:hover { background: #D6EAF8; }
+        .options input { display: none; }
+        input:checked + label { background: #27AE60; color: #fff; font-weight: bold; }
+        #submit-btn { width: 100%; padding: 15px; background: #2C3E50; color: #fff; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; }
+        #result { margin-top: 20px; font-size: 18px; font-weight: bold; text-align: center; color: #2C3E50; }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>बायोलॉजी टेस्ट</h1>
+        <form id="quiz-form">
+            <div class="question">1. मानव शरीर की सबसे बड़ी ग्रंथि कौन सी है?</div>
+            <ul class="options">
+                <li>
+                    <input type="radio" name="q1" id="q1a" value="यकृत">
+                    <label for="q1a">यकृत</label>
+                </li>
+                <li>
+                    <input type="radio" name="q1" id="q1b" value="अग्न्याशय">
+                    <label for="q1b">अग्न्याशय</label>
+                </li>
+            </ul>
 
-<div class="container">
-    <div class="header">
-        <h2>PRAGYA COACHING</h2>
-        <p>Interactive Online Test</p>
+            <div class="question">2. प्रकाश संश्लेषण किस रंग में सबसे कम होता है?</div>
+            <ul class="options">
+                <li>
+                    <input type="radio" name="q2" id="q2a" value="नीले रंग">
+                    <label for="q2a">नीले रंग</label>
+                </li>
+                <li>
+                    <input type="radio" name="q2" id="q2b" value="हरे रंग">
+                    <label for="q2b">हरे रंग</label>
+                </li>
+            </ul>
+
+            <div class="question">3. कोशिका का ऊर्जा घर किसे कहते हैं?</div>
+            <ul class="options">
+                <li>
+                    <input type="radio" name="q3" id="q3a" value="माइटोकॉन्ड्रिया">
+                    <label for="q3a">माइटोकॉन्ड्रिया</label>
+                </li>
+                <li>
+                    <input type="radio" name="q3" id="q3b" value="राइबोसोम">
+                    <label for="q3b">राइबोसोम</label>
+                </li>
+            </ul>
+
+            <div class="question">4. जीवन की मूलभूत इकाई क्या है?</div>
+            <ul class="options">
+                <li>
+                    <input type="radio" name="q4" id="q4a" value="कोशिका">
+                    <label for="q4a">कोशिका</label>
+                </li>
+                <li>
+                    <input type="radio" name="q4" id="q4b" value="ऊतक">
+                    <label for="q4b">ऊतक</label>
+                </li>
+            </ul>
+
+            <div class="question">5. रक्त का लाल रंग किसके कारण होता है?</div>
+            <ul class="options">
+                <li>
+                    <input type="radio" name="q5" id="q5a" value="प्लाज्मा">
+                    <label for="q5a">प्लाज्मा</label>
+                </li>
+                <li>
+                    <input type="radio" name="q5" id="q5b" value="हीमोग्लोबिन">
+                    <label for="q5b">हीमोग्लोबिन</label>
+                </li>
+            </ul>
+
+            <button type="button" id="submit-btn" onclick="calculateResult()">सबमिट करें</button>
+        </form>
+        <div id="result"></div>
     </div>
 
-    <!-- Step 1: Student Login -->
-    <div id="loginBox" class="login-box active">
-        <div class="meta-info">
-            Class: 10 | Subject: Biology | Chapter: Chapter 4
-        </div>
-        <label for="studentName"><b>विद्यार्थी का पूरा नाम दर्ज करें (Enter Your Name):</b></label>
-        <input type="text" id="studentName" placeholder="यहाँ अपना नाम लिखें...">
-        <button class="btn" onclick="startTest()">Test शुरू करें (Start Test)</button>
-    </div>
-
-    <!-- Step 2: Test Interface -->
-    <div id="testBox" class="test-box">
-        <div class="meta-info" id="testMeta"></div>
-        <div class="question-counter" id="qCounter"></div>
-        <div class="question-text" id="qText"></div>
-        <ul class="options-list" id="optionsList"></ul>
-        
-        <div class="nav-buttons">
-            <button class="nav-btn" id="prevBtn" onclick="prevQuestion()">⬅ पिछला</button>
-            <button class="nav-btn" id="nextBtn" onclick="nextQuestion()">अगला ➡</button>
-        </div>
-        <button class="btn" id="submitBtn" style="margin-top: 15px; background-color: #d32f2f; display: none;" onclick="submitTest()">Test Submit करें</button>
-    </div>
-
-    <!-- Step 3: Result Box -->
-    <div id="resultBox" class="result-box">
-        <h3 style="text-align: center; color: #075e54;">🎉 Test Result 🎉</h3>
-        <div class="result-summary" id="resultSummary"></div>
-        <button class="btn whatsapp-btn" onclick="sendOnWhatsApp()">💬 Send Result on WhatsApp</button>
-    </div>
-</div>
-
-<script>
-    const quizData = [
-        {
-            question: "जीवाणुओं में किस प्रकार का जनन मुख्य रूप से होता है?",
-            options: ["A. द्विखंडन (Binary Fission)", "B. बहुखंडन", "C. मुकुलन", "D. बीजाणु निर्माण"],
-            answer: 0,
-            explanation: "जीवाणु (Bacteria) मुख्य रूप से अलैंगिक जनन की विधि यानी द्विखंडन (Binary Fission) द्वारा विभाजित होते हैं।"
-        },
-        {
-            question: "अमीबा में जनन की सामान्य विधि क्या है?",
-            options: ["A. मुकुलन", "B. द्विखंडन", "C. पुनरुद्भवन", "D. कायिक प्रवर्धन"],
-            answer: 1,
-            explanation: "अमीबा एककोशिकीय जीव है जो द्विखंडन (Binary Fission) द्वारा दो संतति कोशिकाओं में बंट जाता है।"
-        },
-        {
-            question: "पुष्प का नर जनन अंग इनमें से कौन सा है?",
-            options: ["A. वर्तिकाग्र (Stigma)", "B. स्त्रीकेशर (Carpel)", "C. पुंकेशर (Stamen)", "D. अंडाशय (Ovary)"],
-            answer: 2,
-            explanation: "पुंकेशर (Stamen) फूल का नर जनन अंग होता है, जिसमें परागकण बनते हैं।"
-        },
-        {
-            question: "परागकोश में क्या पाए जाते हैं?",
-            options: ["A. बाह्यदल", "B. अंडाणु", "C. परागकण", "D. मूलांकुर"],
-            answer: 2,
-            explanation: "परागकोश (Anther) के अंदर परागकण (Pollen grains) पाए जाते हैं।"
-        },
-        {
-            question: "मानव में निषेचन की क्रिया कहाँ होती है?",
-            options: ["A. गर्भाशय (Uterus)", "B. फैलोपियन नलिका (Fallopian Tube)", "C. योनि (Vagina)", "D. अंडाशय (Ovary)"],
-            answer: 1,
-            explanation: "मानव शरीर में नर युग्मक और मादा युग्मक का संलयन (निषेचन) फैलोपियन ट्यूब में होता है।"
-        },
-        {
-            question: "हाइद्रा में अलैंगिक जनन की सामान्य विधि क्या है?",
-            options: ["A. द्विखंडन", "B. मुकुलन (Budding)", "C. बीजाणु गठन", "D. विखंडन"],
-            answer: 1,
-            explanation: "हाइद्रा में शरीर पर एक उभार बनता है जिसे मुकुल (Bud) कहते हैं, और यह मुकुलन विधि द्वारा जनन करता है।"
-        },
-        {
-            question: "AIDS का पूरा नाम क्या है?",
-            options: ["A. Acquired Immuno Deficiency Syndrome", "B. Auto Immune Deficiency System", "C. Acquired Infection Deficiency Source", "D. इनमें से कोई नहीं"],
-            answer: 0,
-            explanation: "AIDS का अर्थ Acquired Immuno Deficiency Syndrome है जो एचआईवी वायरस के कारण होता है।"
-        },
-        {
-            question: "निम्नलिखित में से कौन सा जनन संचारित रोग (STD) है?",
-            options: ["A. टायफाइड", "B. हैजा", "C. गोनोरिया", "D. मलेरिया"],
-            answer: 2,
-            explanation: "गोनोरिया (Gonorrhoea) और सिफलिस यौन संचारित रोग (Sexually Transmitted Diseases) हैं।"
-        },
-        {
-            question: "पत्तियों द्वारा कायिक प्रवर्धन (Vegetative Propagation) किस पौधे में होता है?",
-            options: ["A. ब्रायोफाइलम (Bryophyllum)", "B. गुलाब", "C. आम", "D. धान"],
-            answer: 0,
-            explanation: "ब्रायोफाइलम (पथरचट्टा) के पत्तों के किनारों पर कलिकाएँ निकलती हैं जो नए पौधे को जन्म देती हैं।"
-        },
-        {
-            question: "डीएनए (DNA) का पूरा नाम क्या है?",
-            options: ["A. Deoxyribose Nucleic Acid", "B. Dual Nucleic Acid", "C. Dehydrated Nitrogen Acid", "D. Dynamic Nucleic Acid"],
-            answer: 0,
-            explanation: "DNA का पूरा नाम Deoxyribonucleic Acid है जो आनुवंशिक गुणों को एक पीढ़ी से दूसरी पीढ़ी में ले जाता है।"
-        }
-    ];
-
-    let currentQuestion = 0;
-    let studentName = "";
-    let userAnswers = new Array(quizData.length).fill(null);
-
-    function startTest() {
-        const nameInput = document.getElementById("studentName").value.trim();
-        if (nameInput === "") {
-            alert("कृपया पहले अपना नाम दर्ज करें!");
-            return;
-        }
-        studentName = nameInput;
-        document.getElementById("loginBox").classList.remove("active");
-        document.getElementById("testBox").classList.add("active");
-        loadQuestion();
-    }
-
-    function loadQuestion() {
-        const q = quizData[currentQuestion];
-        document.getElementById("testMeta").innerText = `Student: ${studentName} | Class: 10 | Biology`;
-        document.getElementById("qCounter").innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
-        document.getElementById("qText").innerText = q.question;
-
-        const optionsList = document.getElementById("optionsList");
-        optionsList.innerHTML = "";
-
-        q.options.forEach((opt, index) => {
-            const li = document.createElement("li");
-            li.innerText = opt;
-            if (userAnswers[currentQuestion] === index) {
-                li.classList.add("selected");
+    <script>
+        function calculateResult() {
+            let score = 0;
+            const answers = { q1: "यकृत", q2: "हरे रंग", q3: "माइटोकॉन्ड्रिया", q4: "कोशिका", q5: "हीमोग्लोबिन" };
+            const form = document.getElementById("quiz-form");
+            for (let question in answers) {
+                const selected = form.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
             }
-            li.onclick = () => selectOption(index);
-            optionsList.appendChild(li);
-        });
-
-        document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "block";
-        if (currentQuestion === quizData.length - 1) {
-            document.getElementById("nextBtn").style.display = "none";
-            document.getElementById("submitBtn").style.display = "block";
-        } else {
-            document.getElementById("nextBtn").style.display = "block";
-            document.getElementById("submitBtn").style.display = "none";
+            document.getElementById("result").innerHTML = `आपका स्कोर है: ${score} / 5`;
         }
-    }
-
-    function selectOption(index) {
-        userAnswers[currentQuestion] = index;
-        loadQuestion();
-    }
-
-    function nextQuestion() {
-        if (currentQuestion < quizData.length - 1) {
-            currentQuestion++;
-            loadQuestion();
-        }
-    }
-
-    function prevQuestion() {
-        if (currentQuestion > 0) {
-            currentQuestion--;
-            loadQuestion();
-        }
-    }
-
-    let finalScoreData = {};
-
-    function submitTest() {
-        if (!confirm("क्या आप वाकई Test Submit करना चाहते हैं?")) return;
-
-        let correct = 0;
-        let wrong = 0;
-        let unattempted = 0;
-
-        quizData.forEach((q, i) => {
-            if (userAnswers[i] === null) {
-                unattempted++;
-            } else if (userAnswers[i] === q.answer) {
-                correct++;
-            } else {
-                wrong++;
-            }
-        });
-
-        let marks = correct;
-        let percentage = Math.round((correct / quizData.length) * 100);
-
-        finalScoreData = { correct, wrong, unattempted, marks, percentage };
-
-        document.getElementById("testBox").classList.remove("active");
-        document.getElementById("resultBox").classList.add("active");
-
-        let summaryHTML = `
-            <b>Student Name:</b> ${studentName}<br>
-            <b>Class:</b> 10 | <b>Subject:</b> Biology<br>
-            <b>Chapter:</b> Chapter 4<br><hr>
-            <b>Total Questions:</b> ${quizData.length}<br>
-            <b>Correct Answers:</b> <span style="color:green; font-weight:bold;">${correct}</span><br>
-            <b>Wrong Answers:</b> <span style="color:red; font-weight:bold;">${wrong}</span><br>
-            <b>Unattempted:</b> ${unattempted}<br>
-            <b>Marks Obtained:</b> ${marks} / ${quizData.length}<br>
-            <b>Percentage:</b> ${percentage}%
-        `;
-        document.getElementById("resultSummary").innerHTML = summaryHTML;
-    }
-
-    function sendOnWhatsApp() {
-        let msg = `📚 PRAGYA COACHING\n📝 ONLINE TEST RESULT\n\n`;
-        msg += `Student: ${studentName}\n`;
-        msg += `Class: 10\n`;
-        msg += `Subject: Biology\n`;
-        msg += `Chapter: Chapter 4\n\n`;
-        msg += `Total: ${quizData.length}\n`;
-        msg += `Correct: ${finalScoreData.correct}\n`;
-        msg += `Wrong: ${finalScoreData.wrong}\n`;
-        msg += `Unattempted: ${finalScoreData.unattempted}\n`;
-        msg += `Marks: ${finalScoreData.marks}/${quizData.length}\n`;
-        msg += `Percentage: ${finalScoreData.percentage}%\n`;
-
-        const encodedMsg = encodeURIComponent(msg);
-        // Teacher का WhatsApp नंबर यहाँ जोड़ा जा सकता है या विद्यार्थी सीधे WhatsApp contact चुन सकता है
-        window.open(`https://api.whatsapp.com/send?text=${encodedMsg}`, '_blank');
-    }
-</script>
-
+    </script>
 </body>
 </html>
-
-
